@@ -1,14 +1,16 @@
 import SwiftUI
 
-struct ContentView: View {
+struct DayRatingView: View {
     @State private var score = 5.0
     @State private var isEditing = false
     @State private var date: Date = Date()
     @State private var inputPixelStory: String = ""
     
+    let selectedDate: Date
+    
     var body: some View {
         VStack {
-            Text("\(date, style: .date)")
+            Text("\(selectedDate, style: .date)")
                 .font(.system(size: 30))
                 .fontWeight(.semibold)
                 .padding(.bottom, 130)
