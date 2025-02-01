@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Daily10" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="y5x-hp-zqu">
+                                <rect key="frame" x="62" y="304" width="269" height="31"/>
+                                <connections>
+                                    <action selector="onScoreSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="OCZ-QZ-qLe"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-M6-uMR">
+                                <rect key="frame" x="167" y="558" width="59" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="save"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-Bk-QtI">
+                                <rect key="frame" x="168" y="185" width="57.333333333333343" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yU7-Sc-6wD">
+                                <rect key="frame" x="184.66666666666666" y="372" width="24" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Record Your Day With 10 Words..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hI-QL-Ra1">
+                                <rect key="frame" x="57" y="409" width="278" height="34"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onDiaryTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="63s-TL-vHN"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yU7-Sc-6wD" firstAttribute="top" secondItem="y5x-hp-zqu" secondAttribute="bottom" constant="38" id="2i6-Zd-l0j"/>
+                            <constraint firstItem="ijc-M6-uMR" firstAttribute="top" secondItem="6hI-QL-Ra1" secondAttribute="bottom" constant="100" id="4du-Zm-BHV"/>
+                            <constraint firstItem="y5x-hp-zqu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="8Fc-Tf-8FA"/>
+                            <constraint firstItem="y5x-hp-zqu" firstAttribute="top" secondItem="gl1-Bk-QtI" secondAttribute="bottom" constant="83" id="8Wf-do-D9B"/>
+                            <constraint firstItem="gl1-Bk-QtI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sid-lh-e8k"/>
+                            <constraint firstItem="6hI-QL-Ra1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UK7-2I-PJu"/>
+                            <constraint firstItem="gl1-Bk-QtI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WoG-8I-ncg"/>
+                            <constraint firstItem="gl1-Bk-QtI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="126" id="c40-le-W9n"/>
+                            <constraint firstItem="6hI-QL-Ra1" firstAttribute="top" secondItem="y5x-hp-zqu" secondAttribute="bottom" constant="90" id="iyO-Zd-Cfz"/>
+                            <constraint firstItem="yU7-Sc-6wD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mhl-aA-XFZ"/>
+                            <constraint firstItem="ijc-M6-uMR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pSr-Ne-VwK"/>
+                            <constraint firstItem="y5x-hp-zqu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rr5-Ja-Ddn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateTextLabel" destination="gl1-Bk-QtI" id="7kZ-Gy-hsw"/>
+                        <outlet property="diaryTextField" destination="6hI-QL-Ra1" id="eLO-u5-8wJ"/>
+                        <outlet property="saveButton" destination="ijc-M6-uMR" id="Lfa-Wp-trG"/>
+                        <outlet property="scoreSlider" destination="y5x-hp-zqu" id="9mz-1y-WZM"/>
+                        <outlet property="scoreTextLabel" destination="yU7-Sc-6wD" id="RrU-SU-8uF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.21374045801527" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
