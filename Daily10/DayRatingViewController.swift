@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DayRatingViewController: UIViewController {
     @IBOutlet weak var dateTextLabel: UILabel!
     @IBOutlet weak var scoreSlider: UISlider!
     @IBOutlet weak var scoreTextLabel: UILabel!
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd E"
+        formatter.dateFormat = "yy.MM.dd E"
         let date = formatter.string(from: Date())
         dateTextLabel.text = date
         
@@ -36,5 +36,9 @@ class ViewController: UIViewController {
         scoreTextLabel.text = String(format: "%.1f", roundedScore)
     }
     
+    @IBAction func onClickSave(_ sender: Any) {
+//        let viewController = UIViewController.getViewController(viewControllerEnum: .calendar)
+//        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
