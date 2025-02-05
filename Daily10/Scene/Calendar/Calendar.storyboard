@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calendar View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CalendarViewController" id="Y6W-OH-hqX" customClass="CalendarViewController" customModule="Daily10" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiZ-9u-uxT">
+                                <rect key="frame" x="175.66666666666666" y="159" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cH7-i8-CKb">
+                                <rect key="frame" x="76" y="152" width="35" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt;"/>
+                                <connections>
+                                    <action selector="onClickPrev:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="n8K-Wd-Ctn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrU-dq-bpB">
+                                <rect key="frame" x="281" y="152" width="35" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&gt;"/>
+                                <connections>
+                                    <action selector="onClickNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mBA-NY-Rnf"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IK7-7c-S7o">
+                                <rect key="frame" x="16" y="253" width="361" height="477"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9vu-Tw-xlo">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="IK7-7c-S7o" secondAttribute="bottom" constant="88" id="AP8-ba-gIB"/>
+                            <constraint firstItem="IK7-7c-S7o" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="JVI-PK-VVz"/>
+                            <constraint firstItem="yiZ-9u-uxT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="PDc-q0-sab"/>
+                            <constraint firstItem="IK7-7c-S7o" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="do3-C2-kl5"/>
+                            <constraint firstItem="yiZ-9u-uxT" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dyN-Ch-h9E"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SrU-dq-bpB" secondAttribute="trailing" constant="77" id="g8w-Wh-IjK"/>
+                            <constraint firstItem="cH7-i8-CKb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="93" id="gkF-fF-cAC"/>
+                            <constraint firstItem="cH7-i8-CKb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="76" id="kBK-tB-cGI"/>
+                            <constraint firstItem="SrU-dq-bpB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="93" id="lur-z9-eYy"/>
+                            <constraint firstItem="IK7-7c-S7o" firstAttribute="top" secondItem="cH7-i8-CKb" secondAttribute="bottom" constant="66" id="qgA-Fy-9D5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarCollectionView" destination="IK7-7c-S7o" id="bed-Gz-lH2"/>
+                        <outlet property="nextButton" destination="SrU-dq-bpB" id="ILH-43-CZt"/>
+                        <outlet property="prevButton" destination="cH7-i8-CKb" id="ymc-U5-B2B"/>
+                        <outlet property="yearMonthLabel" destination="yiZ-9u-uxT" id="VL8-1m-32P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="67.938931297709928" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

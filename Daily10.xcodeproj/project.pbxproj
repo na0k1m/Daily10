@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		630FB4BE2D4924BE003D1977 /* Exceptions for "Daily10" folder in "Daily10" target */ = {
+		63E9662B2D51205D007AFCF7 /* Exceptions for "Daily10" folder in "Daily10" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		630FB4AE2D4924BC003D1977 /* Daily10 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				630FB4BE2D4924BE003D1977 /* Exceptions for "Daily10" folder in "Daily10" target */,
+				63E9662B2D51205D007AFCF7 /* Exceptions for "Daily10" folder in "Daily10" target */,
 			);
 			path = Daily10;
 			sourceTree = "<group>";
