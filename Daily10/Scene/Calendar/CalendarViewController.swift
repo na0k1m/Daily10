@@ -7,6 +7,8 @@
 
 import UIKit
 
+var selectedDate: Date?
+
 class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendarCollectionView: UICollectionView!
@@ -23,7 +25,6 @@ class CalendarViewController: UIViewController {
     private var daysCountInMonth = 0
     private var weekdayAdding = 0
     
-//    private let temp: [Int] = [1, 2, 3]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +79,6 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return temp.count
-        
         switch section {
         case 0:
             return 7
@@ -113,16 +112,22 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         else {
             cell.dateLabel.textColor = .black
         }
-        
-//        cell.mainLabel.text = "\(temp[indexPath.row])"
         return cell
     }
     
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
+            guard indexPath.section == 1, let day = Int(days[indexPath.row]) else { return }
+
+            var selectedComponents = components
+            selectedComponents.day = day
+            selectedDate = calendar.date(from: selectedComponents)
+        
+            let viewController = UIViewController.getViewController(viewControllerEnum: .dayRating)
+            navigationController?.pushViewController(viewController, animated: true)
+            
+//        }
+    }
 }
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {

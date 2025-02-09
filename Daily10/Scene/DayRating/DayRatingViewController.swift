@@ -17,10 +17,18 @@ class DayRatingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy.MM.dd E"
-        let date = formatter.string(from: Date())
-        dateTextLabel.text = date
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yy.MM.dd E"
+//        let strSelectedDate = formatter.string(from: selectedDate)
+//        dateTextLabel.text = strSelectedDate
+        if let selectedDate = selectedDate {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yy.MM.dd E"
+            let strSelectedDate = formatter.string(from: selectedDate)
+            dateTextLabel.text = strSelectedDate
+        } else {
+            dateTextLabel.text = "날짜 없음"
+        }
         
     }
 
@@ -37,8 +45,7 @@ class DayRatingViewController: UIViewController {
     }
     
     @IBAction func onClickSave(_ sender: Any) {
-//        let viewController = UIViewController.getViewController(viewControllerEnum: .calendar)
-//        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 

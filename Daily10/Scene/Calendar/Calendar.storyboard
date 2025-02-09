@@ -17,29 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiZ-9u-uxT">
-                                <rect key="frame" x="175.66666666666666" y="159" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="169.33333333333334" y="203" width="54.333333333333343" height="27.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cH7-i8-CKb">
-                                <rect key="frame" x="76" y="152" width="35" height="35"/>
+                                <rect key="frame" x="76" y="196" width="39" height="41.666666666666657"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="&lt;"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt;">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="23"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="onClickPrev:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="n8K-Wd-Ctn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrU-dq-bpB">
-                                <rect key="frame" x="281" y="152" width="35" height="35"/>
+                                <rect key="frame" x="277" y="196" width="39" height="41.666666666666657"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="&gt;"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&gt;">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="23"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="onClickNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mBA-NY-Rnf"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IK7-7c-S7o">
-                                <rect key="frame" x="16" y="253" width="361" height="477"/>
+                                <rect key="frame" x="16" y="303.66666666666674" width="361" height="426.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9vu-Tw-xlo">
                                     <size key="itemSize" width="128" height="128"/>
@@ -65,6 +69,7 @@
                             <constraint firstItem="IK7-7c-S7o" firstAttribute="top" secondItem="cH7-i8-CKb" secondAttribute="bottom" constant="66" id="qgA-Fy-9D5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="o1k-km-hGn"/>
                     <connections>
                         <outlet property="calendarCollectionView" destination="IK7-7c-S7o" id="bed-Gz-lH2"/>
                         <outlet property="nextButton" destination="SrU-dq-bpB" id="ILH-43-CZt"/>
@@ -73,6 +78,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994.6564885496183" y="-2.1126760563380285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cau-D1-xGk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qrc-jZ-Q2N" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sha-ya-4xp">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="iUO-6y-Vkk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2O-qL-KBM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="67.938931297709928" y="-2.1126760563380285"/>
         </scene>
