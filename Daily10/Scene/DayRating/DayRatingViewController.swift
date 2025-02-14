@@ -9,14 +9,28 @@ import UIKit
 import RealmSwift
 
 class Diary: Object{
-    dynamic var id:Int
-    dynamic var date:Date
-    dynamic var score:Int
-    dynamic var diary:String
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var date: String = ""
+    @objc dynamic var score: Float = 5.0
+    @objc dynamic var diary: String = ""
     
     override class func primaryKey() -> String? {
         return "id"
     }
+    
+//    override init() {
+//        id = ""
+//        date = ""
+//        score = 5.0
+//        diary = ""
+//    }
+//    
+//    init(id: String, date: String, score: Float, diary: String) {
+//        self.id = id
+//        self.date = date
+//        self.score = score
+//        self.diary = diary
+//    }
 }
 
 class DayRatingViewController: UIViewController {
@@ -42,10 +56,7 @@ class DayRatingViewController: UIViewController {
             dateTextLabel.text = "날짜 없음"
         }
         
-    }
-
-    @IBAction func onDiaryTextField(_ sender: UITextField) {
-        let diaryText = sender.text
+        //db에 save된 diary 정보를 dayrating view에다가 띄워야하는데 그걸 여러 diary정보중에 최신거를 띄워야 하는뎀
         
     }
     
@@ -58,6 +69,21 @@ class DayRatingViewController: UIViewController {
     
     @IBAction func onClickSave(_ sender: Any) {
         let realm = try! Realm()
+        let diaryEntry = Diary()
+        diaryEntry.id = UUID().uuidString
+        diaryEntry.date = dateTextLabel.text ?? ""
+        diaryEntry.score = scoreSlider.value
+        diaryEntry.diary = diaryTextField.text ?? ""
+        
+        try! realm.write {
+            realm.add(diaryEntry)
+        }
+        
+        let diaries = realm.objects(Diary.self)
+        for diary in diaries {
+            print("\(diary.id), \(diary.date), \(diary.score), \(diary.diary)")
+        }
+        
         navigationController?.popViewController(animated: true)
     }
 }
