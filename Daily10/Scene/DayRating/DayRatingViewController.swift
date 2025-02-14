@@ -6,6 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
+
+class Diary: Object{
+    dynamic var id:Int
+    dynamic var date:Date
+    dynamic var score:Int
+    dynamic var diary:String
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+}
 
 class DayRatingViewController: UIViewController {
     @IBOutlet weak var dateTextLabel: UILabel!
@@ -45,6 +57,7 @@ class DayRatingViewController: UIViewController {
     }
     
     @IBAction func onClickSave(_ sender: Any) {
+        let realm = try! Realm()
         navigationController?.popViewController(animated: true)
     }
 }

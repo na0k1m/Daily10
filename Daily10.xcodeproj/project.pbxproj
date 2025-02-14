@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3919C4D40FD81701FCE6790D /* Pods_Daily10.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF75BC47017EF086D156D76 /* Pods_Daily10.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		4059C36CDBA98297371C3359 /* Pods-Daily10.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily10.debug.xcconfig"; path = "Target Support Files/Pods-Daily10/Pods-Daily10.debug.xcconfig"; sourceTree = "<group>"; };
 		630FB4AC2D4924BC003D1977 /* Daily10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily10.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF75BC47017EF086D156D76 /* Pods_Daily10.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily10.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F741B3538671A039AA73634D /* Pods-Daily10.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily10.release.xcconfig"; path = "Target Support Files/Pods-Daily10/Pods-Daily10.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3919C4D40FD81701FCE6790D /* Pods_Daily10.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		233687959B9B3C28A1D2489C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFF75BC47017EF086D156D76 /* Pods_Daily10.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E361D962D311464400C3634 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4059C36CDBA98297371C3359 /* Pods-Daily10.debug.xcconfig */,
+				F741B3538671A039AA73634D /* Pods-Daily10.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		630FB4A32D4924BC003D1977 = {
 			isa = PBXGroup;
 			children = (
 				630FB4AE2D4924BC003D1977 /* Daily10 */,
 				630FB4AD2D4924BC003D1977 /* Products */,
+				4E361D962D311464400C3634 /* Pods */,
+				233687959B9B3C28A1D2489C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630FB4BF2D4924BE003D1977 /* Build configuration list for PBXNativeTarget "Daily10" */;
 			buildPhases = (
+				603086A6B30DBAD05042B397 /* [CP] Check Pods Manifest.lock */,
 				630FB4A82D4924BC003D1977 /* Sources */,
 				630FB4A92D4924BC003D1977 /* Frameworks */,
 				630FB4AA2D4924BC003D1977 /* Resources */,
+				A616BD52B3C855E2AA544024 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				630FB4AE2D4924BC003D1977 /* Daily10 */,
 			);
 			name = Daily10;
-			packageProductDependencies = (
-			);
 			productName = Daily10;
 			productReference = 630FB4AC2D4924BC003D1977 /* Daily10.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +154,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		603086A6B30DBAD05042B397 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Daily10-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A616BD52B3C855E2AA544024 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily10/Pods-Daily10-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily10/Pods-Daily10-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Daily10/Pods-Daily10-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		630FB4A82D4924BC003D1977 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,12 +209,14 @@
 /* Begin XCBuildConfiguration section */
 		630FB4C02D4924BE003D1977 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4059C36CDBA98297371C3359 /* Pods-Daily10.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JU27F4BHH8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Daily10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -167,12 +238,14 @@
 		};
 		630FB4C12D4924BE003D1977 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F741B3538671A039AA73634D /* Pods-Daily10.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JU27F4BHH8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Daily10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
