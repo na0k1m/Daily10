@@ -7,10 +7,7 @@
 
 import UIKit
 
-var selectedDate: Date?
-
 class CalendarViewController: UIViewController {
-    
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var yearMonthLabel: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -116,17 +113,19 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
-            guard indexPath.section == 1, let day = Int(days[indexPath.row]) else { return }
+        guard indexPath.section == 1, let day = Int(days[indexPath.row]) else { return }
 
-            var selectedComponents = components
-            selectedComponents.day = day
-            selectedDate = calendar.date(from: selectedComponents)
-        
-            let viewController = UIViewController.getViewController(viewControllerEnum: .dayRating)
+        var selectedComponents = components
+        selectedComponents.day = day
+    
+        let viewController = UIViewController.getViewController(viewControllerEnum: .dayRating)
+        guard let dayRatingViewController = viewController as? DayRatingViewController else {
             navigationController?.pushViewController(viewController, animated: true)
-            
-//        }
+            return
+        }
+        dayRatingViewController.selectedDate = calendar.date(from: selectedComponents)
+        
+        navigationController?.pushViewController(dayRatingViewController, animated: true)
     }
 }
 

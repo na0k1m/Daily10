@@ -8,31 +8,6 @@
 import UIKit
 import RealmSwift
 
-class Diary: Object{
-    @objc dynamic var id: String = UUID().uuidString
-    @objc dynamic var date: String = ""
-    @objc dynamic var score: Float = 5.0
-    @objc dynamic var diary: String = ""
-    
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-    
-//    override init() {
-//        id = ""
-//        date = ""
-//        score = 5.0
-//        diary = ""
-//    }
-//    
-//    init(id: String, date: String, score: Float, diary: String) {
-//        self.id = id
-//        self.date = date
-//        self.score = score
-//        self.diary = diary
-//    }
-}
-
 class DayRatingViewController: UIViewController {
     @IBOutlet weak var dateTextLabel: UILabel!
     @IBOutlet weak var scoreSlider: UISlider!
@@ -40,24 +15,33 @@ class DayRatingViewController: UIViewController {
     @IBOutlet weak var diaryTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
+    var selectedDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yy.MM.dd E"
-//        let strSelectedDate = formatter.string(from: selectedDate)
-//        dateTextLabel.text = strSelectedDate
+        var strSelectedDate = ""
+        
         if let selectedDate = selectedDate {
             let formatter = DateFormatter()
             formatter.dateFormat = "yy.MM.dd E"
-            let strSelectedDate = formatter.string(from: selectedDate)
+            strSelectedDate = formatter.string(from: selectedDate)
             dateTextLabel.text = strSelectedDate
         } else {
             dateTextLabel.text = "날짜 없음"
         }
         
-        //db에 save된 diary 정보를 dayrating view에다가 띄워야하는데 그걸 여러 diary정보중에 최신거를 띄워야 하는뎀
+        let realm = try! Realm()
+        let diaries = realm.objects(Diary.self)
+        let selectedDateDiaries = diaries.filter("diaryDate == %@", strSelectedDate)
+        let sortedSelectedDateDiaries = selectedDateDiaries.sorted(byKeyPath: "saveDate", ascending: false)
+        let showDiary = sortedSelectedDateDiaries.first
         
+        if let showDiary = showDiary {
+            scoreSlider.value = showDiary.score
+            scoreTextLabel.text = String(format: "%.1f", scoreSlider.value)
+            diaryTextField.text = showDiary.diaryText
+        }
     }
     
     @IBAction func onScoreSlider(_ sender: UISlider) {
@@ -69,22 +53,23 @@ class DayRatingViewController: UIViewController {
     
     @IBAction func onClickSave(_ sender: Any) {
         let realm = try! Realm()
-        let diaryEntry = Diary()
-        diaryEntry.id = UUID().uuidString
-        diaryEntry.date = dateTextLabel.text ?? ""
-        diaryEntry.score = scoreSlider.value
-        diaryEntry.diary = diaryTextField.text ?? ""
+        let inputDiary = Diary()
+        
+        inputDiary.id = UUID().uuidString
+        inputDiary.saveDate = Date()
+        inputDiary.diaryDate = dateTextLabel.text ?? ""
+        inputDiary.score = scoreSlider.value
+        inputDiary.diaryText = diaryTextField.text ?? ""
         
         try! realm.write {
-            realm.add(diaryEntry)
+            realm.add(inputDiary)
         }
         
         let diaries = realm.objects(Diary.self)
         for diary in diaries {
-            print("\(diary.id), \(diary.date), \(diary.score), \(diary.diary)")
+            print("\(diary.id), \(diary.saveDate), \(diary.diaryDate), \(diary.score), \(diary.diaryText)")
         }
         
         navigationController?.popViewController(animated: true)
     }
 }
-
