@@ -42,6 +42,7 @@ class DayRatingViewController: UIViewController {
             scoreTextLabel.text = String(format: "%.1f", scoreSlider.value)
             diaryTextField.text = showDiary.diaryText
         }
+        
     }
     
     @IBAction func onScoreSlider(_ sender: UISlider) {

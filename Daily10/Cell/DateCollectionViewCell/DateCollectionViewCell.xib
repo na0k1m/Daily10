@@ -16,6 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfF-k3-UBd">
+                        <rect key="frame" x="125" y="125" width="250" height="250"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyM-qu-O5D">
                         <rect key="frame" x="226" y="238" width="48" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -25,12 +28,17 @@
                 </subviews>
                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                 <constraints>
+                    <constraint firstItem="qfF-k3-UBd" firstAttribute="width" secondItem="ilI-9D-Cbp" secondAttribute="width" multiplier="0.5" id="MUH-Wg-iWw"/>
                     <constraint firstItem="DyM-qu-O5D" firstAttribute="centerY" secondItem="ilI-9D-Cbp" secondAttribute="centerY" id="TUY-pG-yNT"/>
+                    <constraint firstItem="qfF-k3-UBd" firstAttribute="centerX" secondItem="ilI-9D-Cbp" secondAttribute="centerX" id="UEv-Vj-nso"/>
+                    <constraint firstItem="qfF-k3-UBd" firstAttribute="centerY" secondItem="ilI-9D-Cbp" secondAttribute="centerY" id="VVg-zc-8Fs"/>
+                    <constraint firstItem="qfF-k3-UBd" firstAttribute="height" secondItem="ilI-9D-Cbp" secondAttribute="height" multiplier="0.5" id="qrp-Yh-uCR"/>
                     <constraint firstItem="DyM-qu-O5D" firstAttribute="centerX" secondItem="ilI-9D-Cbp" secondAttribute="centerX" id="rQ6-mv-edt"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="1048" height="1014"/>
             <connections>
+                <outlet property="circleDateView" destination="qfF-k3-UBd" id="lMa-5p-bz6"/>
                 <outlet property="dateLabel" destination="DyM-qu-O5D" id="rnZ-A6-RUX"/>
             </connections>
             <point key="canvasLocation" x="619.84732824427476" y="-2224.6478873239439"/>

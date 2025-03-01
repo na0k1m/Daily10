@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
@@ -92,7 +93,7 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             let objectArray = Bundle.main.loadNibNamed(String(describing: DateCollectionViewCell.self), owner: nil, options: nil)
             cell = objectArray![0] as! DateCollectionViewCell
         }
-        
+        cell.setCircle()
         switch indexPath.section {
         case 0:
             cell.dateLabel.text = weeks[indexPath.row]
@@ -109,6 +110,65 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         else {
             cell.dateLabel.textColor = .black
         }
+        
+        switch indexPath.section {
+        case 0:
+            cell.circleDateView.backgroundColor = .clear
+            break
+        default:
+            // text-> nil
+            //     - clear
+            // text-> nil X
+            //     - isEmpty = true -> clear
+            //     - isEmpty = false -> color
+            
+            guard let isEmpty = cell.dateLabel.text?.isEmpty, !isEmpty else {
+                cell.circleDateView.backgroundColor = .clear
+                break
+            }
+//            cell.circleDateView.backgroundColor = .green
+            
+            let realm = try! Realm()
+            let diaries = realm.objects(Diary.self)
+            let selectedDateDiaries = diaries.filter("diaryDate == %@", cell.dateLabel.text!)
+            let sortedSelectedDateDiaries = selectedDateDiaries.sorted(byKeyPath: "saveDate", ascending: false)
+            let showDiary = sortedSelectedDateDiaries.first
+            
+//            if let score = showDiary?.score {
+//                switch score {
+            if let showDiary = showDiary {
+                switch showDiary.score {
+                case 0...2.5:
+                    cell.circleDateView.backgroundColor = .yellow
+                case 3...4.5:
+                    cell.circleDateView.backgroundColor = .brown
+                case 5...6.5:
+                    cell.circleDateView.backgroundColor = .orange
+                case 7...8.5:
+                    cell.circleDateView.backgroundColor = .green
+                case 9...10:
+                    cell.circleDateView.backgroundColor = .magenta
+                    print(showDiary.score)
+                default:
+                    cell.circleDateView.backgroundColor = .gray
+                }
+            } else {
+                cell.circleDateView.backgroundColor = .gray  // showDiary가 nil일 경우 기본 처리
+            }
+
+            
+//            if let isEmpty = cell.dateLabel.text?.isEmpty {
+//                if isEmpty {
+//                    cell.circleDateView.backgroundColor = .clear
+//                } else {
+//                    cell.circleDateView.backgroundColor = .green
+//                }
+//            } else {
+//                cell.circleDateView.backgroundColor = .clear
+//            }
+            
+        }
+        
         return cell
     }
     

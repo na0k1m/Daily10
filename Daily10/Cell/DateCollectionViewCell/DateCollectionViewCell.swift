@@ -9,6 +9,11 @@ import UIKit
 
 class DateCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var circleDateView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
-    
+        
+    func setCircle() {
+        layoutIfNeeded()
+        circleDateView.layer.cornerRadius = circleDateView.frame.width / 2
     }
+}
