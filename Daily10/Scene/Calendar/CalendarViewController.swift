@@ -149,25 +149,21 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             if let showDiary = showDiary {
                 switch showDiary.score {
                 case 0...2.5:
-                    cell.circleDateView.backgroundColor = .yellow
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xF0768D)
                 case 3...4.5:
-                    cell.circleDateView.backgroundColor = .brown
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xFBAC5B)
                 case 5...6.5:
-                    cell.circleDateView.backgroundColor = .orange
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xFFF38F)
                 case 7...8.5:
-                    cell.circleDateView.backgroundColor = .green
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0x9EE56E)
                 case 9...10:
-                    cell.circleDateView.backgroundColor = .magenta
-                    print(showDiary.score)
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0x77BBFF)
                 default:
-                    print("if")
-                    cell.circleDateView.backgroundColor = .gray
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xD7D7D7)
                 }
             } else {
-                print("else")
-                cell.circleDateView.backgroundColor = .purple  // showDiary가 nil일 경우 기본 처리
+                cell.circleDateView.backgroundColor = UIColor(hex: 0xF0F0F0)  // showDiary가 nil일 경우 기본 처리
             }
-
             
 //            if let isEmpty = cell.dateLabel.text?.isEmpty {
 //                if isEmpty {
@@ -198,6 +194,17 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         dayRatingViewController.selectedDate = calendar.date(from: selectedComponents)
         
         navigationController?.pushViewController(dayRatingViewController, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadCalendarData()
+        calendarCollectionView.reloadData()
+    }
+
+    func reloadCalendarData() {
+        let realm = try! Realm()
+        let diaries = realm.objects(Diary.self)
     }
 }
 
