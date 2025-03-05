@@ -71,6 +71,7 @@ class DayRatingViewController: UIViewController {
             print("\(diary.id), \(diary.saveDate), \(diary.diaryDate), \(diary.score), \(diary.diaryText)")
         }
         
+        
         navigationController?.popViewController(animated: true)
     }
 }

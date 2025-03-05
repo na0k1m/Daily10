@@ -128,9 +128,19 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             }
 //            cell.circleDateView.backgroundColor = .green
             
+            
+            // 요일도 필요/ diaryDate 가 "yy.MM.dd E" 이 형식의 string임
+            guard let dayText = cell.dateLabel.text, !dayText.isEmpty else { // 날짜만 비교하고잇음 달도 비교해야하는데
+                break
+            }
+            let formattedDayText = String(format: "%02d", Int(dayText) ?? 0)
+            
+            let formattedDateString = String(format: "%02d.%02d.%@ %@", components.year! % 100, components.month!, formattedDayText, weeks[indexPath.row % 7])
+            print(formattedDateString)
+            
             let realm = try! Realm()
             let diaries = realm.objects(Diary.self)
-            let selectedDateDiaries = diaries.filter("diaryDate == %@", cell.dateLabel.text!)
+            let selectedDateDiaries = diaries.filter("diaryDate == %@", formattedDateString)
             let sortedSelectedDateDiaries = selectedDateDiaries.sorted(byKeyPath: "saveDate", ascending: false)
             let showDiary = sortedSelectedDateDiaries.first
             
@@ -150,10 +160,12 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
                     cell.circleDateView.backgroundColor = .magenta
                     print(showDiary.score)
                 default:
+                    print("if")
                     cell.circleDateView.backgroundColor = .gray
                 }
             } else {
-                cell.circleDateView.backgroundColor = .gray  // showDiary가 nil일 경우 기본 처리
+                print("else")
+                cell.circleDateView.backgroundColor = .purple  // showDiary가 nil일 경우 기본 처리
             }
 
             
