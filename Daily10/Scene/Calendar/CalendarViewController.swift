@@ -136,7 +136,7 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             let formattedDayText = String(format: "%02d", Int(dayText) ?? 0)
             
             let formattedDateString = String(format: "%02d.%02d.%@ %@", components.year! % 100, components.month!, formattedDayText, weeks[indexPath.row % 7])
-            print(formattedDateString)
+//            print(formattedDateString)
             
             let realm = try! Realm()
             let diaries = realm.objects(Diary.self)
@@ -162,7 +162,8 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
                     cell.circleDateView.backgroundColor = UIColor(hex: 0xD7D7D7)
                 }
             } else {
-                cell.circleDateView.backgroundColor = UIColor(hex: 0xF0F0F0)  // showDiary가 nil일 경우 기본 처리
+//                cell.circleDateView.backgroundColor = UIColor(hex: 0xF0F0F0)  // showDiary가 nil일 경우 기본 처리
+                cell.circleDateView.backgroundColor = .clear
             }
             
 //            if let isEmpty = cell.dateLabel.text?.isEmpty {

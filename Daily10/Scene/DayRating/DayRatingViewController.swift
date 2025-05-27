@@ -10,7 +10,7 @@ import RealmSwift
 
 class DayRatingViewController: UIViewController {
     @IBOutlet weak var dateTextLabel: UILabel!
-    @IBOutlet weak var scoreSlider: UISlider!
+    @IBOutlet weak var scoreView: RatingView!
     @IBOutlet weak var scoreTextLabel: UILabel!
     @IBOutlet weak var diaryTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
@@ -38,18 +38,11 @@ class DayRatingViewController: UIViewController {
         let showDiary = sortedSelectedDateDiaries.first
         
         if let showDiary = showDiary {
-            scoreSlider.value = showDiary.score
-            scoreTextLabel.text = String(format: "%.1f", scoreSlider.value)
+            scoreView.score = Int(showDiary.score)
+            scoreTextLabel.text = "\(scoreView.score)"
             diaryTextField.text = showDiary.diaryText
         }
-        
-    }
-    
-    @IBAction func onScoreSlider(_ sender: UISlider) {
-        let roundedScore = round(scoreSlider.value / 0.5) * 0.5
-        scoreSlider.value = roundedScore
-        
-        scoreTextLabel.text = String(format: "%.1f", roundedScore)
+        scoreView.delegate = self
     }
     
     @IBAction func onClickSave(_ sender: Any) {
@@ -59,7 +52,7 @@ class DayRatingViewController: UIViewController {
         inputDiary.id = UUID().uuidString
         inputDiary.saveDate = Date()
         inputDiary.diaryDate = dateTextLabel.text ?? ""
-        inputDiary.score = scoreSlider.value
+        inputDiary.score = Float(scoreView.score)
         inputDiary.diaryText = diaryTextField.text ?? ""
         
         try! realm.write {
@@ -73,5 +66,11 @@ class DayRatingViewController: UIViewController {
         
         
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension DayRatingViewController: RatingViewDelegate {
+    func valueChanged(_ value: Int) {
+        scoreTextLabel.text = "\(value)"
     }
 }
