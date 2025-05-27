@@ -148,18 +148,20 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
 //                switch score {
             if let showDiary = showDiary {
                 switch showDiary.score {
-                case 0...2.5:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0xF0768D)
-                case 3...4.5:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0xFBAC5B)
-                case 5...6.5:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0xFFF38F)
-                case 7...8.5:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0x9EE56E)
-                case 9...10:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0x77BBFF)
+                case 0...2:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xE9F3FD) // 95
+                case 3...4:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xD1E5FB) // 90
+                case 5:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xB7D6F9) // 85
+                case 6...7:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0x8CBDF5) // 75
+                case 8...9:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0x5AA0F1) // 65
+                case 10:
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0x1679EB) // 50
                 default:
-                    cell.circleDateView.backgroundColor = UIColor(hex: 0xD7D7D7)
+                    cell.circleDateView.backgroundColor = UIColor(hex: 0xD7D7D7) // 회
                 }
             } else {
 //                cell.circleDateView.backgroundColor = UIColor(hex: 0xF0F0F0)  // showDiary가 nil일 경우 기본 처리
